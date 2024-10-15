@@ -8,6 +8,13 @@
 
 </div>
 
+<div align="center">
+
+[Documentation](https://docs.svar.dev/svelte/core/category/menu) • [Demos](https://docs.svar.dev/svelte/core/samples-menu/#/bar/willow)
+
+</div>
+
+
 SVAR Menu is a ready to use Svelte component for creating context and popup menus. Easily customize each menu item with text, icons, and sub-items, and control the menu's position relative to its parent element.
 
 ### How to Use
