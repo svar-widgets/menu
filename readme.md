@@ -19,11 +19,11 @@ SVAR Menu is a ready to use Svelte component for creating context and popup menu
 
 ### Versions for Svelte 4 and 5
 
-There are two versions of the menu component: 
+There are two versions of the Menu component: 
 - version **1.x** was designed to work with Svelte 4
 - version **2.x** is created for Svelte 5 (please note that this version is in beta and may contain some instabilities)
 
-To use the SVAR menu v.2.0 beta for Svelte 5, install it as follows:
+To use the SVAR Menu v.2.0 beta for Svelte 5, install it as follows:
 
 ```
 npm install wx-svelte-menu
