@@ -4,12 +4,12 @@
 
 	const options = getMenuBarOptions();
 
-	let message = "";
+	let message = $state("");
 	function clicked(ev) {
-		const action = ev.detail.action;
+		const action = ev.action;
 		message = action ? `clicked on ${action.id}` : "closed";
 	}
 </script>
 
-<MenuBar {options} on:click={clicked}></MenuBar>
+<MenuBar {options} onclick={clicked}></MenuBar>
 <div class="demo-status">{message}</div>

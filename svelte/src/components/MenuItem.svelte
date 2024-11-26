@@ -1,9 +1,12 @@
 <script>
 	import { getItemHandler } from "../helpers";
 
-	export let item;
-	export let showSub = false;
-	export let activeItem = null;
+	let {
+		item,
+		showSub = $bindable(false),
+		activeItem = $bindable(null),
+		onclick,
+	} = $props();
 
 	function onHover() {
 		showSub = item.data ? item.id : false;
@@ -11,19 +14,21 @@
 	}
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y_click_events_have_key_events -->
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
 	class="wx-item {item.css || ''}"
 	data-id={item.id}
-	on:mouseenter={onHover}
-	on:click
+	onmouseenter={onHover}
+	{onclick}
 >
-	{#if item.icon}<i class="wx-icon {item.icon}" />{/if}
+	{#if item.icon}<i class="wx-icon {item.icon}"></i>{/if}
 	{#if item.type}
-		<svelte:component this={getItemHandler(item.type)} {item} />
+		{@const SvelteComponent = getItemHandler(item.type)}
+		<SvelteComponent {item} />
 	{:else}<span class="wx-value"> {item.text} </span>{/if}
 	{#if item.subtext}<span class="wx-subtext">{item.subtext}</span>{/if}
-	{#if item.data}<i class="wx-sub-icon wxi-angle-right" />{/if}
+	{#if item.data}<i class="wx-sub-icon wxi-angle-right"></i>{/if}
 </div>
 
 <style>

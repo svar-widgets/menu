@@ -1,20 +1,25 @@
-### SVAR Menu for Svelte
+<div align="center">
+	
+# SVAR Svelte Menu
 
-SVAR Menu provides ready to use control for creating context and popup menus
+[![npm](https://img.shields.io/npm/v/wx-svelte-menu.svg)](https://www.npmjs.com/package/wx-svelte-menu)
+[![License](https://img.shields.io/github/license/svar-widgets/menu)](https://github.com/svar-widgets/menu/blob/main/license.txt)
+[![npm downloads](https://img.shields.io/npm/dm/wx-svelte-menu.svg)](https://www.npmjs.com/package/wx-svelte-menu)
 
-### Useful Links
+</div>
 
--   [Documentation](https://docs.svar.dev/svelte/core/overview)
--   [How to start guide](https://docs.svar.dev/svelte/core/getting_started/)
--   [Demos](https://docs.svar.dev/svelte/menu/samples/#/base/willow)
+<div align="center">
 
-### License
+[Documentation](https://docs.svar.dev/svelte/core/category/menu) • [Demos](https://docs.svar.dev/svelte/core/samples-menu/#/bar/willow)
 
-SVAR Menu for Svelte is available under MIT license.
+</div>
+
+
+SVAR Menu is a ready to use Svelte component for creating context and popup menus. Easily customize each menu item with text, icons, and sub-items, and control the menu's position relative to its parent element.
 
 ### How to Use
 
-To use the widget, simply import the package and include the component in your Svelte file:
+To use SVAR Svelte Menu, simply import the package and include the component in your Svelte file:
 
 ```svelte
 <script>
@@ -39,6 +44,8 @@ To use the widget, simply import the package and include the component in your S
 <Menu {options} on:click={clicked} />
 ```
 
+For more details, visit the [documentation](https://docs.svar.dev/svelte/core/category/menu).
+
 ### How to Modify
 
 Typically, you don't need to modify the code. However, if you wish to do so, follow these steps:
@@ -58,3 +65,7 @@ To run the test:
     ```sh
     yarn test:cypress
     ```
+
+### Need Help?
+
+Join our [community forum](https://forum.svar.dev/) to get help or post feature requests. 

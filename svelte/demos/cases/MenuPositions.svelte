@@ -5,7 +5,7 @@
 
 	const options = getOptions();
 
-	let at = "right";
+	let at = $state("right");
 	const modes = [
 		{ id: "right", name: "right" },
 		{ id: "left", name: "left" },

@@ -20,9 +20,9 @@
 		},
 	];
 
-	let message = "";
+	let message = $state("");
 	function clicked(ev) {
-		const { context, action } = ev.detail;
+		const { context, action } = ev;
 		message = action ? `${action.id} for item #${context}` : "closed";
 	}
 
@@ -34,19 +34,20 @@
 	const resolver = id => id;
 	const innerResolver = id => (id[0] == "b" ? id : null);
 	const outerResolver = id => (id[0] == "c" ? id : null);
-	var activate;
+
+	var menu = $state();
 </script>
 
 <div class="demo-status">{message}</div>
 
-<ActionMenu at="right" {options} on:click={clicked} bind:handler={activate} />
+<ActionMenu at="right" {options} onclick={clicked} bind:this={menu} />
 <div class="demo-box">
 	<h3>Action menu, icons</h3>
 	<p>Click on menu "button"</p>
 	{#each items as item (item.id)}
 		<div class="item">
 			<div class="icon">
-				<Icon css="wxi-menu" on:click={ev => activate(ev, item.id)} />
+				<Icon css="wxi-menu" onclick={ev => menu.show(ev, item.id)} />
 			</div>
 			<div class="title">{item.type} {item.id}</div>
 		</div>
@@ -56,7 +57,7 @@
 <div class="demo-box">
 	<h3>Action menu, limited to specific areas</h3>
 	<p>Click on menu "button"</p>
-	<ActionMenu at="right" {options} on:click={clicked} {resolver}>
+	<ActionMenu at="right" {options} onclick={clicked} {resolver}>
 		{#each items as item (item.id)}
 			<div class="item">
 				<div data-context-id={item.id} class="menu">menu</div>
@@ -77,7 +78,7 @@
 		<ActionMenu
 			at="point"
 			{options}
-			on:click={clicked}
+			onclick={clicked}
 			resolver={outerResolver}
 		>
 			{#each items as item (item.id)}

@@ -4,23 +4,15 @@
 	import { getProjects } from "../data";
 
 	const options = getProjects();
-	let active = "a";
 
-	let label;
-	$: {
-		options.forEach(a => {
-			if (a.id === active) {
-				label = a.text;
-				a.icon = "wxi-check";
-			} else {
-				a.icon = "wxi-empty";
-			}
-		});
-	}
-
+	let label = $state("Select project");
 	function change(ev) {
-		const action = ev.detail.action;
-		if (action) active = action.id;
+		console.log(ev);
+		const action = ev.action;
+		if (action) {
+			// active = action.id;
+			label = ev.action.text;
+		}
 	}
 </script>
 
@@ -28,7 +20,7 @@
 	<h3>Button with list of options</h3>
 
 	<div style="display: flex;flex-direction: row;">
-		<DropDownMenu {options} on:click={change}>
+		<DropDownMenu {options} onclick={change}>
 			<Button type="primary">{label}</Button>
 		</DropDownMenu>
 		<div>&nbsp;</div>

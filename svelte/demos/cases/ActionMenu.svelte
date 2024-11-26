@@ -4,7 +4,7 @@
 	import { getProjects } from "../data";
 
 	const options = getProjects();
-	let active = ["a", "b", "c", "d"];
+	let active = $state(["a", "b", "c", "d"]);
 	const byId = id => options.find(a => a.id === id);
 
 	function filterMenu(v, item) {
@@ -17,11 +17,11 @@
 	}
 
 	function clicked(ev) {
-		const { context, action } = ev.detail;
+		const { context, action } = ev;
 		if (action) active[context] = action.id;
 	}
 
-	let showMenu;
+	let menu = $state();
 </script>
 
 <div class="demo-box">
@@ -30,12 +30,13 @@
 	<ActionMenu
 		{options}
 		filter={filterMenu}
-		on:click={clicked}
-		bind:handler={showMenu}
+		onclick={clicked}
+		bind:this={menu}
 	/>
 	{#each active as item, i}
-		<Button click={ev => showMenu(ev, i)} value={active[i]}>
+		<Button onclick={ev => menu.show(ev, i)} value={active[i]}>
 			{byId(item).text}
 		</Button>
+		&nbsp;
 	{/each}
 </div>

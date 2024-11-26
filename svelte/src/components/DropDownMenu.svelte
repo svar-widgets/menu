@@ -1,22 +1,18 @@
 <script>
 	import { Portal } from "wx-svelte-core";
 	import Menu from "./Menu.svelte";
-	import { createEventDispatcher } from "svelte";
-	const dispatch = createEventDispatcher();
 
-	export let options;
-	export let at = "bottom";
-	export let css = "";
+	let { options, at = "bottom", css = "", children, onclick } = $props();
 
 	export const handler = ev => {
 		parent = ev.target;
 		ev.preventDefault();
 	};
 
-	var parent = null;
+	var parent = $state(null);
 	function onClick(ev) {
 		parent = null;
-		dispatch("click", ev.detail);
+		onclick && onclick(ev);
 	}
 	function show(ev) {
 		let target = ev.target;
@@ -27,14 +23,17 @@
 	}
 </script>
 
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<div on:click={show} data-menu-ignore="true">
-	<slot />
+<!-- svelte-ignore a11y_click_events_have_key_events -->
+<!-- svelte-ignore a11y_no_static_element_interactions -->
+<div onclick={show} data-menu-ignore="true">
+	{@render children?.()}
 </div>
 {#if parent}
-	<Portal let:mount>
-		{#key parent}
-			<Menu {css} {at} {mount} {parent} {options} on:click={onClick} />
-		{/key}
+	<Portal>
+		{#snippet children({ mount })}
+			{#key parent}
+				<Menu {css} {at} {mount} {parent} {options} onclick={onClick} />
+			{/key}
+		{/snippet}
 	</Portal>
 {/if}

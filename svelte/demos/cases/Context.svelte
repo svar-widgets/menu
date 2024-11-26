@@ -4,9 +4,9 @@
 
 	const options = getOptions();
 
-	let message = "";
+	let message = $state("");
 	function clicked(ev) {
-		const action = ev.detail.action;
+		const action = ev.action;
 		message = action ? `clicked on ${action.id}` : "closed";
 	}
 </script>
@@ -15,18 +15,22 @@
 
 <div class="demo-box">
 	<h3>Right click menu</h3>
-	<ContextMenu {options} on:click={clicked} at="point">
+	<ContextMenu {options} onclick={clicked} at="point">
 		<div class="box">Click me (menu at cursor)</div>
 	</ContextMenu>
 </div>
 
 <div class="demo-box">
 	<h3>Nested context menus</h3>
-	<ContextMenu {options} on:click={clicked} at="point">
+	<ContextMenu {options} onclick={clicked} at="point">
 		<div class="double-box" style="padding:20px; background: #ddd">
 			Click me (outer menu)
 			<br />
-			<ContextMenu options={[{ id: 1, text: "inner menu" }]} at="right">
+			<ContextMenu
+				options={[{ id: "inner", text: "inner menu" }]}
+				onclick={clicked}
+				at="right"
+			>
 				<span
 					style="display: inline-block; width: 150px; padding:10px; background: #fff;"
 					>(inner menu)</span

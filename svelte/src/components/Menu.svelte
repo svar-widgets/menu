@@ -1,38 +1,40 @@
 <script>
+	import Menu from "./Menu.svelte";
+	import { run } from "svelte/legacy";
+
 	import { clickOutside, calculatePosition } from "wx-lib-dom";
-	import { onMount, createEventDispatcher } from "svelte";
+	import { onMount } from "svelte";
 
 	import MenuItem from "./MenuItem.svelte";
 	import { prepareMenuData } from "../helpers";
 
-	const dispatch = createEventDispatcher();
+	let {
+		options,
+		left = 0,
+		top = 0,
+		at = "bottom",
+		parent = null,
+		mount = null,
+		context = null,
+		css = "",
+		onclick,
+	} = $props();
 
-	export let options;
-	$: prepareMenuData(options);
+	let x = $state(-10000);
+	let y = $state(-10000);
+	let z = $state(20);
+	let width = $state();
 
-	export let left = 0;
-	export let top = 0;
-	export let at = "bottom";
-	export let parent = null;
-	export let mount = null;
-	export let context = null;
-	export let css = "";
-
-	let x = -10000;
-	let y = -10000;
-	let index = 0;
-	let width;
-
-	let self;
-	let showSub;
-	let activeItem;
+	let self = $state();
+	let showSub = $state(false);
+	let activeItem = $state(null);
 
 	function updatePosition() {
 		const result = calculatePosition(self, parent, at, left, top);
 		x = result.x || x;
 		y = result.y || y;
-		index = result.index;
-		width = result?.width || width;
+		z = result.z || z;
+		width = result.width || width;
 	}
 
 	// unfortunately svelte doesn't guarantee that afterUpdate of child component
@@ -40,37 +42,43 @@
 	// moved menu to the correct parent we are registering single time handler
 	if (mount) mount(updatePosition);
 	onMount(updatePosition);
-	$: updatePosition(parent);
 
 	function onLeave() {
 		showSub = false;
 	}
 	function cancel() {
-		dispatch("click", { action: null });
+		onclick && onclick({ action: null });
 	}
+	run(() => {
+		prepareMenuData(options);
+	});
+	run(() => {
+		updatePosition(parent);
+	});
 </script>
 
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
 	use:clickOutside={{ callback: cancel, modal: true }}
 	bind:this={self}
 	data-wx-menu="true"
 	class="wx-menu {css}"
-	style="top:{y}px;left:{x}px;width:{width};"
-	on:mouseleave={onLeave}
+	style="top:{y}px;left:{x}px;width:{width};z-index:{z}"
+	onmouseleave={onLeave}
 >
 	{#each options as item (item.id)}
 		{#if item.type === "separator"}
-			<div class="wx-separator" />
+			<div class="wx-separator"></div>
 		{:else}
 			<MenuItem
 				{item}
 				bind:showSub
 				bind:activeItem
-				on:click={ev => {
+				onclick={ev => {
 					if (!item.data && !ev.defaultPrevented) {
 						const pack = { context, action: item, event: ev };
 						if (item.handler) item.handler(pack);
-						dispatch("click", pack);
+						onclick && onclick(pack);
 
 						// it is a rare case when we need to stop event bubbling
 						// clicking on menu is isolated action which must not affect any other elements on the page
@@ -80,13 +88,13 @@
 			/>
 		{/if}
 		{#if item.data && showSub === item.id}
-			<svelte:self
+			<Menu
 				{css}
 				options={item.data}
 				at="right-overlap"
 				parent={activeItem}
 				{context}
-				on:click
+				{onclick}
 			/>
 		{/if}
 	{/each}

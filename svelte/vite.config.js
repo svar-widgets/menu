@@ -22,7 +22,7 @@ export default ({ mode }) => {
 	} else {
 		build = {
 			rollupOptions: {
-				input: { index: resolve(__dirname, "demos/index.html") },
+				input: { index: resolve(__dirname, "index.html") },
 			},
 		};
 	}

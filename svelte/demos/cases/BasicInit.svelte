@@ -6,13 +6,13 @@
 
 	const options = getOptions();
 
-	let menu1 = null,
-		menu2 = null,
-		menu3 = null;
+	let menu1 = $state(null),
+		menu2 = $state(null),
+		menu3 = $state(null);
 
-	let message = "";
+	let message = $state("");
 	function clicked(ev) {
-		const action = ev.detail.action;
+		const action = ev.action;
 		message = action ? `clicked on ${action.id}` : "closed";
 		menu1 = menu2 = menu3 = null;
 	}
@@ -22,30 +22,31 @@
 
 <div class="demo-box">
 	<h3>Bottom menu</h3>
-	<Button type="primary" click={ev => (menu1 = ev.target)}>Click me</Button>
+	<Button type="primary" onclick={ev => (menu1 = ev.target)}>Click me</Button>
 	{#if menu1}
-		<Menu {options} parent={menu1} on:click={clicked} />
+		<Menu {options} parent={menu1} onclick={clicked} />
 	{/if}
 </div>
 
 <div class="demo-box">
 	<h3>Right-side menu</h3>
-	<Button type="primary" click={ev => (menu2 = ev.target)}>Click me</Button>
+	<Button type="primary" onclick={ev => (menu2 = ev.target)}>Click me</Button>
 	{#if menu2}
-		<Menu {options} parent={menu2} on:click={clicked} at={"right"} />
+		<Menu {options} parent={menu2} onclick={clicked} at={"right"} />
 	{/if}
 </div>
 
 <div class="demo-box">
 	<h3>Menu at cursor</h3>
-	<!-- svelte-ignore a11y-click-events-have-key-events -->
-	<div class="box" on:click={ev => (menu3 = ev)}>Click me</div>
+	<!-- svelte-ignore a11y_click_events_have_key_events -->
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
+	<div class="box" onclick={ev => (menu3 = ev)}>Click me</div>
 	{#if menu3}
 		<Menu
 			{options}
 			left={menu3.clientX + 5}
 			top={menu3.clientY + 5}
-			on:click={clicked}
+			onclick={clicked}
 			at={"right"}
 		/>
 	{/if}

@@ -4,30 +4,32 @@
 	import Menu from "./Menu.svelte";
 	import { filterMenu } from "../helpers";
 
-	import { createEventDispatcher } from "svelte";
-	const dispatch = createEventDispatcher();
+	let {
+		options,
+		at = "bottom",
+		resolver = null,
+		dataKey = "contextId",
+		filter = null,
+		css = "",
+		children,
+		onclick,
+	} = $props();
 
-	const SLOTS = $$props.$$slots;
+	var filteredOptions = $derived.by(() => {
+		if (item !== null && filter) {
+			return filterMenu(options, v => filter(v, item));
+		}
+		return options;
+	});
 
-	export let options;
-	export let at = "bottom";
-	export let resolver = null;
-	export let dataKey = "contextId";
-	export let filter = null;
-	export let css = "";
-	export const handler = show;
-
-	var filteredOptions;
-	$: filteredOptions = options;
-
-	var item = null;
-	var parent = null;
-	let left = 0,
-		top = 0;
+	var item = $state(null);
+	var parent = $state(null);
+	let left = $state(0),
+		top = $state(0);
 
 	function onClick(ev) {
 		parent = null;
-		dispatch("click", ev.detail);
+		onclick && onclick(ev);
 	}
 	function getDataAttr(node, name) {
 		let v = null;
@@ -37,7 +39,8 @@
 		}
 		return v ? id(v) : null;
 	}
-	function show(ev, obj) {
+
+	export function show(ev, obj) {
 		if (!ev) {
 			parent = null;
 			return;
@@ -57,9 +60,6 @@
 			if (!item) return;
 		}
 
-		if (item !== null && filter) {
-			filteredOptions = filterMenu(options, v => filter(v, item));
-		}
 		parent = target;
 
 		ev.preventDefault();
@@ -71,27 +71,30 @@
 	// otherwise, the menu will be hidden as click-ouside occurs after show call
 </script>
 
-{#if SLOTS && SLOTS.default}
-	<!-- svelte-ignore a11y-click-events-have-key-events -->
-	<div on:click={handler} data-menu-ignore="true">
-		<slot />
+{#if children}
+	<!-- svelte-ignore a11y_click_events_have_key_events -->
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
+	<div onclick={show} data-menu-ignore="true">
+		{@render children?.()}
 	</div>
 {/if}
 
 {#if parent}
-	<Portal let:mount>
-		{#key parent}
-			<Menu
-				{css}
-				{at}
-				{top}
-				{left}
-				{mount}
-				{parent}
-				context={item}
-				on:click={onClick}
-				options={filteredOptions}
-			/>
-		{/key}
+	<Portal>
+		{#snippet children({ mount })}
+			{#key parent}
+				<Menu
+					{css}
+					{at}
+					{top}
+					{left}
+					{mount}
+					{parent}
+					context={item}
+					onclick={onClick}
+					options={filteredOptions}
+				/>
+			{/key}
+		{/snippet}
 	</Portal>
 {/if}

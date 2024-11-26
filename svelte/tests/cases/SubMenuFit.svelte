@@ -6,13 +6,13 @@
 
 	const options = getOptions();
 
-	let menu1 = null,
-		menu2 = null,
-		menu3 = null;
+	let menu1 = $state(null),
+		menu2 = $state(null),
+		menu3 = $state(null);
 
-	let message = "";
+	let message = $state("");
 	function clicked(ev) {
-		const action = ev.detail.action;
+		const action = ev.action;
 		message = action ? `clicked on ${action.id}` : "closed";
 		menu1 = menu2 = menu3 = null;
 	}
@@ -25,8 +25,10 @@
 		Click me (bottom menu)
 	</Button>
 	{#if menu1}
-		<Portal let:mount>
-			<Menu {options} parent={menu1} on:click={clicked} {mount} />
+		<Portal>
+			{#snippet children({ mount })}
+				<Menu {options} parent={menu1} onclick={clicked} {mount} />
+			{/snippet}
 		</Portal>
 	{/if}
 	<Button type="primary" click={ev => (menu1 = ev.target)}>
@@ -39,14 +41,16 @@
 		Click me (right menu)
 	</Button>
 	{#if menu2}
-		<Portal let:mount>
-			<Menu
-				{options}
-				parent={menu2}
-				on:click={clicked}
-				at={"right"}
-				{mount}
-			/>
+		<Portal>
+			{#snippet children({ mount })}
+				<Menu
+					{options}
+					parent={menu2}
+					onclick={clicked}
+					at={"right"}
+					{mount}
+				/>
+			{/snippet}
 		</Portal>
 	{/if}
 	<Button type="primary" click={ev => (menu2 = ev.target)}>
@@ -59,14 +63,16 @@
 		Click me (left menu)
 	</Button>
 	{#if menu3}
-		<Portal let:mount>
-			<Menu
-				{options}
-				parent={menu3}
-				on:click={clicked}
-				at={"left"}
-				{mount}
-			/>
+		<Portal>
+			{#snippet children({ mount })}
+				<Menu
+					{options}
+					parent={menu3}
+					onclick={clicked}
+					at={"left"}
+					{mount}
+				/>
+			{/snippet}
 		</Portal>
 	{/if}
 	<Button type="primary" click={ev => (menu3 = ev.target)}>
