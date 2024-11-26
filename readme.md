@@ -29,7 +29,7 @@ To use the SVAR Menu v.2.0 beta for Svelte 5, install it as follows:
 npm install wx-svelte-menu
 ```
 
-To use the SVAR Core for Svelte 4:
+To use the SVAR Menu for Svelte 4:
 
 ```
 npm install wx-svelte-menu@1.3.0
