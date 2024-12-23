@@ -30,23 +30,30 @@
 		},
 	];
 
-	let skin = null;
+	let skin = $state(null);
 
-	let skinSettings = {};
-	$: Object.assign(
-		skinSettings,
-		(skins.find(a => a.id === skin) || {}).props
+	const skinSettings = $derived(
+		Object.assign(
+			skinSettings,
+			(skins.find(a => a.id === skin) || {}).props
+		)
 	);
 
 	function toggleSkin(e) {
+		e.stopPropagation();
 		const data = e.target.dataset;
 		if (data.role === "skin") {
 			skin = data.id;
 		}
 	}
 
-	let title = "";
-	let show = false;
+	function hideSidebar(e) {
+		e.stopPropagation();
+		show = false;
+	}
+
+	let title = $state("");
+	let show = $state(false);
 	let noSidebar = document.location.search.indexOf("no-sidebar") !== -1;
 
 	function onClick() {
@@ -54,12 +61,15 @@
 	}
 
 	function updateInfo(ev) {
-		skin = ev.detail.skin;
-		title = ev.detail.title;
+		skin = ev.skin;
+		title = ev.title;
 	}
 
 	const links = getLinks();
-	$: document.body.className = `wx-${skin}-theme`;
+
+	$effect(() => {
+		document.body.className = `wx-${skin}-theme`;
+	});
 </script>
 
 <Material />
@@ -67,17 +77,24 @@
 <WillowDark />
 
 <div class="layout" class:no-sidebar={noSidebar}>
-	<!-- svelte-ignore a11y-click-events-have-key-events -->
-	<div class="sidebar" class:move={show} role="sidebar" on:click={onClick}>
+	<!-- svelte-ignore a11y_click_events_have_key_events -->
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
+	<!-- svelte-ignore a11y_interactive_supports_focus -->
+	<div class="sidebar" class:move={show} role="tabpanel" onclick={onClick}>
 		{#if show}
 			<div class="title">WX Demos</div>
+			<!-- svelte-ignore a11y_no_static_element_interactions -->
+			<div class="icon" onclick={hideSidebar}>
+				<i class="wxi-angle-left"></i>
+			</div>
 		{/if}
 
+		<!-- svelte-ignore a11y_interactive_supports_focus -->
 		<div
 			role="toolbar"
 			class="skins"
 			class:move={!show}
-			on:click|stopPropagation={toggleSkin}
+			onclick={toggleSkin}
 		>
 			{#each skins as data (data.id)}
 				<div
@@ -97,20 +114,20 @@
 			{/each}
 		{:else}
 			<div class="hint">{title}</div>
+			<div class="vertical icon"><i class="wxi-angle-right"></i></div>
 		{/if}
 	</div>
 
-	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<div
 		use:popupContainer
 		class="content wx-{skin}-theme"
 		class:move={show}
 		role="none"
-		on:click={() => (show = false)}
+		onclick={() => (show = false)}
 	>
 		<Locale>
 			<Globals>
-				<Router on:newpage={updateInfo} {skin} />
+				<Router onnewpage={updateInfo} {skin} />
 			</Globals>
 		</Locale>
 	</div>
@@ -161,13 +178,33 @@
 
 	.hint {
 		position: absolute;
-		top: 30px;
+		top: 60px;
 		right: 30px;
 		font-size: 16px;
 		font-weight: 500;
 		color: #5f5f5f;
 		transform: rotate(180deg);
 		writing-mode: vertical-rl;
+	}
+	.icon {
+		width: 32px;
+		height: 32px;
+		cursor: pointer;
+		border-radius: 16px;
+		line-height: 32px;
+		background-color: #fff;
+		text-align: center;
+		position: absolute;
+		top: 12px;
+		right: 10px;
+		color: #5f5f5f;
+	}
+	.vertical.icon {
+		background-color: rgba(235, 235, 235, 0.61);
+		right: 22px;
+	}
+	.icon i {
+		font-size: 24px;
 	}
 
 	.title {

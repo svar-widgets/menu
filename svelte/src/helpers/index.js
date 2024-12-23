@@ -5,6 +5,14 @@ export function walkData(data, cb) {
 	});
 }
 
+export function mapData(data, cb) {
+	return data.map(a => {
+		const out = cb(a);
+		if (a.data && a.data.length) out.data = mapData(a.data, cb);
+		return out;
+	});
+}
+
 export function filterMenu(data, cb) {
 	const out = [];
 	data.forEach(a => {
@@ -21,11 +29,9 @@ export function filterMenu(data, cb) {
 
 let uid = 1;
 export function prepareMenuData(data) {
-	walkData(data, a => {
-		a.id = a.id || uid++;
+	return mapData(data, a => {
+		return { ...a, id: a.id || uid++ };
 	});
-
-	return data;
 }
 
 const handlers = {};

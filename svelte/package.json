@@ -1,6 +1,7 @@
 {
 	"name": "wx-svelte-menu",
-	"version": "1.3.0",
+	"version": "2.0.1",
+	"description": "Svelte menu component for creating dropdown menus, context menus, or complex menu bars",
 	"productTag": "menu",
 	"productTrial": false,
 	"type": "module",
@@ -8,8 +9,8 @@
 		"build": "vite build",
 		"build:dist": "vite build --mode dist",
 		"build:tests": "vite build --mode test",
-		"lint": "yarn eslint ./demos ./src --ext .svelte,.ts,.js",
-		"start": "vite --open=/demos/",
+		"lint": "yarn eslint ./demos ./src",
+		"start": "vite --open",
 		"start:tests": "vite --open=/tests/ --host 0.0.0.0  --port 5100 --mode test",
 		"test": "true",
 		"test:cypress": "cypress run -P ./ --config \"baseUrl=http://localhost:5100/tests\""
@@ -29,15 +30,28 @@
 	"bugs": {
 		"url": "https://forum.svar.dev"
 	},
-	"homepage": "https://svar.dev/svelte/core/",
+	"homepage": "https://svar.dev/svelte/menu/",
 	"dependencies": {
-		"wx-svelte-core": "1.3.0",
-		"wx-lib-dom": "0.6.0"
+		"wx-svelte-core": "2.0.1",
+		"wx-lib-dom": "0.7.1"
 	},
 	"files": [
 		"src",
 		"readme.md",
 		"whatsnew.md",
 		"license.txt"
+	],
+	"keywords": [
+		"svelte",
+		"svelte menu",
+		"menu",
+		"menu component",
+		"svelte component",
+		"menubar",
+		"menu bar",
+		"context menu",
+		"dropdown",
+		"dropdown menu",
+		"svar widgets"
 	]
 }

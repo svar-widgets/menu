@@ -5,14 +5,14 @@
 
 	const options = getOptions();
 
-	let at = "right";
+	let at = $state("right");
 	const modes = [
-		{ id: "right", name: "right" },
-		{ id: "left", name: "left" },
-		{ id: "top", name: "top" },
-		{ id: "bottom", name: "bottom" },
-		{ id: "bottom-right", name: "bottom, right" },
-		{ id: "bottom-left", name: "bottom, left" },
+		{ id: "right", label: "right" },
+		{ id: "left", label: "left" },
+		{ id: "top", label: "top" },
+		{ id: "bottom", label: "bottom" },
+		{ id: "bottom-right", label: "bottom, right" },
+		{ id: "bottom-left", label: "bottom, left" },
 	];
 </script>
 

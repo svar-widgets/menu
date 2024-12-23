@@ -25,10 +25,9 @@
 		}),
 	};
 
-	let skin = "willow";
+	let skin = $state("willow");
 	function onRouteChange(path) {
 		const parts = path.split("/");
-		console.log(parts);
 		skin = parts[2];
 	}
 

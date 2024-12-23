@@ -4,9 +4,9 @@
 
 	const options = getOptions();
 
-	let message = "";
+	let message = $state("");
 	function clicked(ev) {
-		const { context, action } = ev.detail;
+		const { context, action } = ev;
 		message = action
 			? `${action.id} for ${context.type} ${context.id}`
 			: "closed";
@@ -47,7 +47,7 @@
 		{options}
 		resolver={getItem}
 		filter={filterMenu}
-		on:click={clicked}
+		onclick={clicked}
 	>
 		{#each items as item (item.id)}
 			<div

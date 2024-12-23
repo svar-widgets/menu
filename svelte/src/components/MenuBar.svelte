@@ -1,23 +1,18 @@
 <script>
-	import { createEventDispatcher } from "svelte";
-
 	import ActionMenu from "./ActionMenu.svelte";
 	import { prepareMenuData } from "../helpers";
 
-	const dispatch = createEventDispatcher();
+	let menu;
+	let { css = "", menuCss = "", options, onclick } = $props();
 
-	export let css = "";
-	export let menuCss = "";
-	export let options;
-	$: prepareMenuData(options);
+	const finalOptions = $derived(prepareMenuData(options));
 
-	let active;
-	let menuOptions = [];
-	let activate = null;
+	let active = $state();
+	let menuOptions = $state([]);
 
 	function doClick(ev) {
 		active = null;
-		dispatch("click", ev.detail);
+		onclick && onclick(ev);
 	}
 
 	function setMenu(ev, item, trigger) {
@@ -29,14 +24,14 @@
 			} else {
 				menuOptions = item.data;
 				active = item.id;
-				activate(ev, item);
+				menu.show(ev, item);
 			}
 		} else {
 			// hide the submenu
-			activate(null);
+			menu.show(null);
 			// if it was the click action, dispatch it and end hover mode
 			if (trigger) {
-				dispatch("click", { action: item });
+				onclick && onclick({ action: item });
 				active = null;
 			} else {
 				// do not remove active flag, to preserve the hover mode
@@ -51,20 +46,20 @@
 </script>
 
 <div class="wx-menubar {css}">
-	{#each options as item (item.id)}
+	{#each finalOptions as item (item.id)}
 		<button
 			class="wx-item {active === item.id ? 'wx-active' : ''}"
-			on:mouseenter={ev => onHover(ev, item)}
-			on:click={ev => setMenu(ev, item, true)}>{item.text}</button
+			onmouseenter={ev => onHover(ev, item)}
+			onclick={ev => setMenu(ev, item, true)}>{item.text}</button
 		>
 	{/each}
 </div>
 
 <ActionMenu
 	css={menuCss}
-	on:click={doClick}
+	onclick={doClick}
 	options={menuOptions}
-	bind:handler={activate}
+	bind:this={menu}
 />
 
 <style>

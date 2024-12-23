@@ -4,11 +4,11 @@
 
 	const options = getOptions();
 
-	let message = "";
+	let message = $state("");
 	function clicked(ev) {
-		const { context, action } = ev.detail;
+		const { context, action } = ev;
 		message = action
-			? `${action.id} for ${context.type} ${context.id}`
+			? `${action.id} for ${context.type || "task"} ${context.id}`
 			: "closed";
 	}
 
@@ -33,7 +33,7 @@
 <div class="demo-box">
 	<h3>Context menu can be limited to specific HTML elements</h3>
 	<p>Some items are disabled</p>
-	<ContextMenu {options} at="point" resolver={getItem} on:click={clicked}>
+	<ContextMenu {options} at="point" resolver={getItem} onclick={clicked}>
 		{#each items as item (item.id)}
 			<div
 				data-context-id={item.id}

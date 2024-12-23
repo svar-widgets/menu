@@ -20,7 +20,7 @@
 		<div style="height: 2000px;">&nbsp;</div>
 	</div>
 
-	<div class="spacer" />
+	<div class="spacer"></div>
 
 	<div class="demo-box">
 		<h3>Scroll relative to document</h3>

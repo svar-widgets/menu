@@ -1,21 +1,28 @@
 <script>
 	import ActionMenu from "./ActionMenu.svelte";
 
-	const SLOTS = $$props.$$slots;
+	// svelte-ignore non_reactive_update
+	let menu = null;
+	export function show(ev, obj) {
+		menu.show(ev, obj);
+	}
 
-	export let handler = null;
-
-	export let options;
-	export let at = "bottom";
-	export let resolver = null;
-	export let dataKey = "contextId";
-	export let filter = null;
-	export let css = "";
+	let {
+		options,
+		at = "bottom",
+		resolver = null,
+		dataKey = "contextId",
+		filter = null,
+		css = "",
+		children,
+		onclick,
+	} = $props();
 </script>
 
-{#if SLOTS && SLOTS.default}
-	<div on:contextmenu={handler} data-menu-ignore="true">
-		<slot />
+{#if children}
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
+	<div oncontextmenu={menu.show} data-menu-ignore="true">
+		{@render children?.()}
 	</div>
 {/if}
 
@@ -26,6 +33,6 @@
 	{resolver}
 	{dataKey}
 	{filter}
-	bind:handler
-	on:click
+	bind:this={menu}
+	{onclick}
 />

@@ -1,3 +1,7 @@
+### 2.0.1
+
+-   [add] svelte 5 support
+
 ### 1.3.0
 
 -   [dev] public release, using core@1.3.0
