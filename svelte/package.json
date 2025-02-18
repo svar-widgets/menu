@@ -32,8 +32,8 @@
 	},
 	"homepage": "https://svar.dev/svelte/menu/",
 	"dependencies": {
-		"wx-svelte-core": "2.0.1",
-		"wx-lib-dom": "0.7.1"
+		"wx-svelte-core": "2.1.0",
+		"wx-lib-dom": "0.8.0"
 	},
 	"files": [
 		"src",

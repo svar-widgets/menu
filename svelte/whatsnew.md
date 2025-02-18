@@ -1,74 +1,94 @@
-### 2.0.1
+## 2.1.0
 
--   [add] svelte 5 support
+### Fixes
+
+-   ContextMenu breaks parent scrollable container
+-   Dropdown Menu is incorrectly positioned near viewport edges
+
+## 2.0.1
+
+### New features
+
+-   Svelte 5 support
 
 ### 1.3.0
 
--   [dev] public release, using core@1.3.0
+-   Public release, using core@1.3.0
 
-### 1.2.4
+## 1.2.4
 
--   [update] ability to define custom css class for top menu and submenu's containers
--   [fix] incorrect z-index when shown from popup
+### Updates
 
-### 1.2.3
+-   Ability to define custom css class for top Menu and submenu's containers
 
--   [update] when menu is closed it doesn't affect other popup elements
--   [fix] regression in repositioning menu when clicking on next active area
+### Fixes
 
-### 1.2.1
+-   Incorrect z-index when shown from Popup
 
--   [fix] regression in popup closing in some cases
+## 1.2.3
 
-### 1.2.0
+### Updates
 
--   [deps] uses core@1.2.0
+-   When Menu is closed it doesn't affect other popup elements
 
-### 1.1.1
+### Fixes
 
--   [fix] incorrect positioning in "point" mode when menu initialized not as child of document.body
--   [fix] submenus lost context values
+-   Regression in repositioning Menu when clicking on next active area
 
-### 1.1.0
+## 1.2.1
 
--   [update] visual improvements
--   [fix] incorrect auto-position logic
+### Fixes
 
-### 0.0.1-rc21
+-   Regression in popup closing in some cases
+
+## 1.2.0
+
+-   Using core@1.2.0
+
+## 1.1.1
+
+### Fixes
+
+-   Incorrect positioning in "point" mode when menu initialized not as child of document.body
+-   Submenus lost context values
+
+## 1.1.0
+
+### Updates
+
+-   Visual improvements
+
+### Fixes
+
+-   Incorrect auto-position logic
+
+#### 0.0.1-rc21
 
 -   [fix] space between icon and text
 
-### 0.0.1-rc20
+#### 0.0.1-rc20
 
 -   [add] auto-fit for sub menus
 
-### 0.0.1-rc19
+#### 0.0.1-rc19
 
 -   [add] MenuBar - top level menu bar
 
-### 0.0.1-rc18
+#### 0.0.1-rc18
 
 -   menu doesn't require that all items have an unique IDs ( will generate missed ids on its own )
 
-### 0.0.1-rc17
+#### 0.0.1-rc17
 
 -   fix position in scrolled container
 -   temporary fix for cypress tests
 
-### 0.0.1-rc11
+#### 0.0.1-rc11
 
 -   updated styles
 -   bottom-fit mode
 
-### 0.0.1-rc10
-
-#### Fixes
-
--   incorrect position in scrollable container
--   activation area can't contain complex markup inside
--   missed hover styling
-
-#### New features
+#### 0.0.1-rc10
 
 -   ability to init menu in some specific container
 -   ability to define subtext ( hotkey, etc. )

@@ -10,6 +10,7 @@
 
 	function onHover() {
 		showSub = item.data ? item.id : false;
+		// eslint-disable-next-line @typescript-eslint/no-this-alias
 		activeItem = this;
 	}
 </script>

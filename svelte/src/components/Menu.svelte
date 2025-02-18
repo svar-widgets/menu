@@ -30,10 +30,12 @@
 
 	function updatePosition() {
 		const result = calculatePosition(self, parent, at, left, top);
-		x = result.x || x;
-		y = result.y || y;
-		z = result.z || z;
-		width = result.width || width;
+		if (result) {
+			x = result.x;
+			y = result.y;
+			z = result.z;
+			width = result.width;
+		}
 	}
 
 	// unfortunately svelte doesn't guarantee that afterUpdate of child component

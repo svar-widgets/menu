@@ -21,9 +21,9 @@
 
 {#if children}
 	<!-- svelte-ignore a11y_no_static_element_interactions -->
-	<div oncontextmenu={menu.show} data-menu-ignore="true">
+	<span oncontextmenu={menu.show} data-menu-ignore="true">
 		{@render children?.()}
-	</div>
+	</span>
 {/if}
 
 <ActionMenu
