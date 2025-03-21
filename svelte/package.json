@@ -1,6 +1,6 @@
 {
 	"name": "wx-svelte-menu",
-	"version": "2.1.0",
+	"version": "2.1.1",
 	"description": "Svelte menu component for creating dropdown menus, context menus, or complex menu bars",
 	"productTag": "menu",
 	"productTrial": false,
@@ -30,9 +30,9 @@
 	"bugs": {
 		"url": "https://forum.svar.dev"
 	},
-	"homepage": "https://svar.dev/svelte/menu/",
+	"homepage": "https://svar.dev/svelte/core/",
 	"dependencies": {
-		"wx-svelte-core": "2.1.0",
+		"wx-svelte-core": "2.1.1",
 		"wx-lib-dom": "0.8.0"
 	},
 	"files": [
