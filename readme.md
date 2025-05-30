@@ -16,6 +16,12 @@
 
 **SVAR Menu** is a ready-to-use Svelte component for creating context and popup menus. Easily customize each menu item with text, icons, and sub-items, and control the menu's position relative to its parent element.
 
+<div align="center">
+	
+<img src="https://svar.dev/images/github/github-menu.png" alt="Svelte Menu Component" style="width: 600px;">
+
+</div>
+
 ### Svelte 4 and Svelte 5 versions
 
 There are two versions of the library: the 1.x version, designed to work with Svelte 4, and the 2.x version, created for Svelte 5. To use the SVAR Menu beta for Svelte 5, install it as follows:
