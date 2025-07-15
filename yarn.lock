@@ -4780,27 +4780,32 @@ wrappy@1:
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==
 
-wx-core-locales@2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/wx-core-locales/-/wx-core-locales-2.1.1.tgz#ca9cd63d0dbd96619d30949d0c9e73bc07cfbd64"
-  integrity sha512-BaRT677XHobYVYfEl/xKXKVeGTwNp9j+Xj25C/xnX6rS3Io2REJeU4qTTzaqBdd7i7BCPP2mAx9DnNYfpKmtyQ==
+wx-core-locales@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/wx-core-locales/-/wx-core-locales-2.2.0.tgz#54be3ec83b1308f0f11b908dd8dfce7a3194decc"
+  integrity sha512-bDquS5k6v784vOsjDnkpbrqL4Yh3CQGf3Rt3gM6mAFDUI97/Iy2r7fzQ3It7Hb3dxI9Vtym4Bwsg3X3ATAz8KA==
 
 wx-lib-dom@0.8.0:
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/wx-lib-dom/-/wx-lib-dom-0.8.0.tgz#38514ebedbfee0350fa1f5a1168a1c8503b422de"
   integrity sha512-1jQFsoX8EiA/7D6IT8k8I52PlPFs850etY+k7jqww9CM5L3JEELprKuy422sUfXjnnpMoaVvUrmndWZVOldsAA==
 
+wx-lib-dom@0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/wx-lib-dom/-/wx-lib-dom-0.9.1.tgz#69673f820f6081b276ce9a6028ba314495cd780c"
+  integrity sha512-uh0ikmNRSgF1ksCY4mu/Nuqo/zrTOKP75Ok+YeA+Jp6i5QCzD5EabWtgAGIBq54cikAbjSGOdNPa6qYLc9s0qA==
+
 wx-lib-svelte@0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/wx-lib-svelte/-/wx-lib-svelte-0.5.1.tgz#0d2cc90ccc8b777e81df8be1b2b005818274d534"
   integrity sha512-zYfkAv5r0zQ3KFyCPPusC8EkMXUC3I0L1QsK+An0rNlRkY/iocPTOcaouyycg48BdmsBK8fSL0vK0B4oZuujrQ==
 
-wx-svelte-core@2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/wx-svelte-core/-/wx-svelte-core-2.1.1.tgz#55ce941bd68ecf1c4adb19021c0c6b19d2030600"
-  integrity sha512-Qxjd2S+77Nl99sNfxH1uQVtviAWoTCT2hXnQRj4jwcLFnUInh1QMDO8M/LJko5zIHXR8PQeTcyFtLet2mkzb+A==
+wx-svelte-core@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/wx-svelte-core/-/wx-svelte-core-2.2.0.tgz#eb9fd5cb39781e9c4c2b0e83b319e20808bc625e"
+  integrity sha512-txE3Me/gfb899V3QJbH+Rt+e7rgvruzLCIKvZoDXT/c78TUWqMRHFZUpIkjlH9toozVvdL0UnyQ8BqVMRQqBVg==
   dependencies:
-    wx-core-locales "2.1.1"
+    wx-core-locales "2.2.0"
     wx-lib-dom "0.8.0"
     wx-lib-svelte "0.5.1"
 
