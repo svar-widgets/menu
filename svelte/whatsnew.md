@@ -1,3 +1,9 @@
+## 2.2.1
+
+### Fixes
+
+-   Using in Salesforce environment
+
 ## 2.2.0
 
 -   Using core@2.2.0
