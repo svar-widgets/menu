@@ -1,5 +1,5 @@
 <script>
-	import { Button, ModalArea, SideArea, Popup } from "wx-svelte-core";
+	import { Button, ModalArea, SideArea, Popup } from "@svar-ui/svelte-core";
 	import { ActionMenu } from "../../src/index";
 	import { getProjects } from "../data";
 

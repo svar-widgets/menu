@@ -1,5 +1,5 @@
 <script>
-	import { Button, Segmented } from "wx-svelte-core";
+	import { Button, Segmented } from "@svar-ui/svelte-core";
 	import { DropDownMenu } from "../../src/index";
 	import { getOptions } from "../data";
 

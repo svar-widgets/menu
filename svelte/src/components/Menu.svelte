@@ -1,7 +1,7 @@
 <script>
 	import Menu from "./Menu.svelte";
 
-	import { clickOutside, calculatePosition } from "wx-lib-dom";
+	import { clickOutside, calculatePosition } from "@svar-ui/lib-dom";
 	import { onMount } from "svelte";
 
 	import MenuItem from "./MenuItem.svelte";

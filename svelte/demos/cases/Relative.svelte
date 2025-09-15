@@ -1,5 +1,5 @@
 <script>
-	import { Button, popupContainer } from "wx-svelte-core";
+	import { Button, popupContainer } from "@svar-ui/svelte-core";
 	import { DropDownMenu } from "../../src/index";
 
 	const options = [

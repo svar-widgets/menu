@@ -1,5 +1,5 @@
 <script>
-	import { Button, Text } from "wx-svelte-core";
+	import { Button, Text } from "@svar-ui/svelte-core";
 	let { item } = $props();
 	let value = $state("");
 </script>

@@ -1,5 +1,5 @@
 <script>
-	import { Button, Portal } from "wx-svelte-core";
+	import { Button, Portal } from "@svar-ui/svelte-core";
 	import { Menu } from "../../src/index";
 
 	import { getOptions } from "../../demos/data";

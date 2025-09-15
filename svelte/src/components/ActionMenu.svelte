@@ -1,6 +1,6 @@
 <script>
-	import { Portal } from "wx-svelte-core";
-	import { id } from "wx-lib-dom";
+	import { Portal } from "@svar-ui/svelte-core";
+	import { id } from "@svar-ui/lib-dom";
 	import Menu from "./Menu.svelte";
 	import { filterMenu } from "../helpers";
 

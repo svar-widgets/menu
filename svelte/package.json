@@ -1,5 +1,5 @@
 {
-	"name": "wx-svelte-menu",
+	"name": "@svar-ui/svelte-menu",
 	"version": "2.2.1",
 	"description": "Svelte menu component for creating dropdown menus, context menus, or complex menu bars",
 	"productTag": "menu",
@@ -32,8 +32,8 @@
 	},
 	"homepage": "https://svar.dev/svelte/core/",
 	"dependencies": {
-		"wx-svelte-core": "2.2.1",
-		"wx-lib-dom": "0.9.1"
+		"@svar-ui/svelte-core": "2.2.1",
+		"@svar-ui/lib-dom": "0.9.2"
 	},
 	"files": [
 		"src",

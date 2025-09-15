@@ -1,5 +1,5 @@
 <script>
-	import { Portal } from "wx-svelte-core";
+	import { Portal } from "@svar-ui/svelte-core";
 	import Menu from "./Menu.svelte";
 
 	let { options, at = "bottom", css = "", children, onclick } = $props();

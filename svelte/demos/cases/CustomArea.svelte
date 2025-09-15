@@ -1,6 +1,6 @@
 <script>
 	import { ActionMenu } from "../../src/index";
-	import { Icon } from "wx-svelte-core";
+	import { Icon } from "@svar-ui/svelte-core";
 
 	const options = [
 		{

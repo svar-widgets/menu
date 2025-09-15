@@ -1,5 +1,5 @@
 <script>
-	import { Button } from "wx-svelte-core";
+	import { Button } from "@svar-ui/svelte-core";
 	import { MenuBar, DropDownMenu } from "../../src/index";
 	import { getMenuBarOptions } from "../data";
 
