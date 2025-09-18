@@ -5,16 +5,17 @@
 
 	const styledOptions = [
 		{ id: 1, text: "Add User", subtext: "Ctrl+A" },
-		{ id: 2, text: "Rerfresh", subtext: "Ctrl+R" },
+		{ id: 2, text: "Refresh", subtext: "Ctrl+R" },
 		{ id: 3, text: "Delete User", css: "danger" },
 	];
 
-	import ButtonMenuItem from "../items/ButtonMenuItem.svelte";
-	import UserMenuItem from "../items/UserMenuItem.svelte";
-	registerMenuItem("button", ButtonMenuItem);
+	import ButtonMenuItem from "../custom/ButtonMenuItem.svelte";
+	import UserMenuItem from "../custom/UserMenuItem.svelte";
+
 	registerMenuItem("user", UserMenuItem);
 
 	const options = getTeam();
+	options[3].comp = ButtonMenuItem;
 </script>
 
 <div class="demo-box">

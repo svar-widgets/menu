@@ -6,8 +6,8 @@
 
 	let message = $state("");
 	function clicked(ev) {
-		const action = ev.action;
-		message = action ? `clicked on ${action.id}` : "closed";
+		const option = ev.option;
+		message = option ? `clicked on ${option.id}` : "closed";
 	}
 </script>
 

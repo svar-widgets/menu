@@ -4,7 +4,7 @@
 	import { clickOutside, calculatePosition } from "@svar-ui/lib-dom";
 	import { onMount } from "svelte";
 
-	import MenuItem from "./MenuItem.svelte";
+	import MenuOption from "./MenuOption.svelte";
 	import { prepareMenuData } from "../helpers";
 
 	let {
@@ -26,7 +26,7 @@
 
 	let self = $state();
 	let showSub = $state(false);
-	let activeItem = $state(null);
+	let activeOption = $state(null);
 
 	function updatePosition() {
 		const result = calculatePosition(self, parent, at, left, top);
@@ -48,7 +48,12 @@
 		showSub = false;
 	}
 	function cancel() {
-		onclick && onclick({ action: null });
+		//[deprecated] action will be deprecated in 3.0
+		onclick && onclick({ action: null, option: null });
+	}
+	function onshow(id, el) {
+		showSub = id;
+		activeOption = el;
 	}
 
 	const finalOptions = $derived(prepareMenuData(options));
@@ -66,18 +71,23 @@
 	style="position:absolute;top:{y}px;left:{x}px;width:{width};z-index:{z}"
 	onmouseleave={onLeave}
 >
-	{#each finalOptions as item (item.id)}
-		{#if item.type === "separator"}
+	{#each finalOptions as option (option.id)}
+		{#if option.comp === "separator"}
 			<div class="wx-separator"></div>
 		{:else}
-			<MenuItem
-				{item}
-				bind:showSub
-				bind:activeItem
+			<MenuOption
+				{option}
+				{onshow}
 				onclick={ev => {
-					if (!item.data && !ev.defaultPrevented) {
-						const pack = { context, action: item, event: ev };
-						if (item.handler) item.handler(pack);
+					if (!option.data && !ev.defaultPrevented) {
+						//[deprecated] action will be deprecated in 3.0
+						const pack = {
+							context,
+							action: option,
+							option,
+							event: ev,
+						};
+						if (option.handler) option.handler(pack);
 						onclick && onclick(pack);
 
 						// it is a rare case when we need to stop event bubbling
@@ -87,12 +97,12 @@
 				}}
 			/>
 		{/if}
-		{#if item.data && showSub === item.id}
+		{#if option.data && showSub === option.id}
 			<Menu
 				{css}
-				options={item.data}
+				options={option.data}
 				at="right-overlap"
-				parent={activeItem}
+				parent={activeOption}
 				{context}
 				{onclick}
 			/>

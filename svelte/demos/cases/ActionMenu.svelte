@@ -7,18 +7,18 @@
 	let active = $state(["a", "b", "c", "d"]);
 	const byId = id => options.find(a => a.id === id);
 
-	function filterMenu(v, item) {
-		if (v.id === active[item]) {
-			v.icon = "wxi-check";
+	function filterMenu(option, item) {
+		if (option.id === active[item]) {
+			option.icon = "wxi-check";
 		} else {
-			v.icon = "wxi-empty";
+			option.icon = "wxi-empty";
 		}
 		return true;
 	}
 
 	function clicked(ev) {
-		const { context, action } = ev;
-		if (action) active[context] = action.id;
+		const { context, option } = ev;
+		if (option) active[context] = option.id;
 	}
 
 	let menu = $state();

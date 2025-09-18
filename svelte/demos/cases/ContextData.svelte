@@ -6,9 +6,9 @@
 
 	let message = $state("");
 	function clicked(ev) {
-		const { context, action } = ev;
-		message = action
-			? `${action.id} for ${context.type || "task"} ${context.id}`
+		const { context, option } = ev;
+		message = option
+			? `${option.id} for ${context.type || "task"} ${context.id}`
 			: "closed";
 	}
 

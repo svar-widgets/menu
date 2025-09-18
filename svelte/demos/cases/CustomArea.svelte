@@ -20,8 +20,8 @@
 	let message = $state("");
 	let submessage = $state("");
 	function clicked(ev) {
-		const { context, action } = ev;
-		message = action ? `${action.id} for item #${context}` : "closed";
+		const { context, option } = ev;
+		message = option ? `${option.id} for item #${context}` : "closed";
 	}
 
 	const items = [

@@ -2,9 +2,9 @@
 	
 # SVAR Svelte Menu
 
-[![npm](https://img.shields.io/npm/v/wx-svelte-menu.svg)](https://www.npmjs.com/package/wx-svelte-menu)
+[![npm](https://img.shields.io/npm/v/wx-svelte-menu.svg)](https://www.npmjs.com/package/@svar-ui/svelte-menu)
 [![License](https://img.shields.io/github/license/svar-widgets/menu)](https://github.com/svar-widgets/menu/blob/main/license.txt)
-[![npm downloads](https://img.shields.io/npm/dm/wx-svelte-menu.svg)](https://www.npmjs.com/package/wx-svelte-menu)
+[![npm downloads](https://img.shields.io/npm/dm/wx-svelte-menu.svg)](https://www.npmjs.com/package/@svar-ui/svelte-menuu)
 
 </div>
 
@@ -14,7 +14,6 @@
 
 </div>
 
-
 SVAR Menu is a ready to use Svelte component for creating context and popup menus. Easily customize each menu item with text, icons, and sub-items, and control the menu's position relative to its parent element.
 
 ### How to Use
@@ -23,11 +22,10 @@ To use SVAR Svelte Menu, simply import the package and include the component in 
 
 ```svelte
 <script>
-	import { Menu } from "wx-svelte-menu";
+	import { Menu } from "@svar-ui/svelte-menu";
 
-	function onClick(item) {
-		const action = ev.detail.action;
-		message = action ? `clicked on ${action.id}` : "closed";
+	function onClick(ev) {
+		message = ev.option ? `clicked on ${ev.option.id}` : "closed";
 	}
 
 	const options = [
@@ -41,7 +39,7 @@ To use SVAR Svelte Menu, simply import the package and include the component in 
 	];
 </script>
 
-<Menu {options} on:click={clicked} />
+<Menu {options} onclick={onClick} />
 ```
 
 For more details, visit the [documentation](https://docs.svar.dev/svelte/core/category/menu).
@@ -68,4 +66,4 @@ To run the test:
 
 ### Need Help?
 
-Join our [community forum](https://forum.svar.dev/) to get help or post feature requests. 
+Join our [community forum](https://forum.svar.dev/) to get help or post feature requests.

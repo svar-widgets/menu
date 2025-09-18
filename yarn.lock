@@ -642,10 +642,10 @@
   resolved "https://registry.npmjs.org/@sinclair/typebox/-/typebox-0.27.8.tgz#6667fac16c436b5434a387a34dedb013198f6e6e"
   integrity sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==
 
-"@svar-ui/core-locales@2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@svar-ui/core-locales/-/core-locales-2.2.1.tgz#6de8a53de0fbe3f1af9033e43604b8116a7c42df"
-  integrity sha512-R147AuVZ4JpiDeC4dnIkk97QPZn+1SBimNYkjJobri+HuqMNYB4G9ODxqAeVMFMnGuQ5QV8Gg7eslJb1UaJQeQ==
+"@svar-ui/core-locales@2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@svar-ui/core-locales/-/core-locales-2.3.1.tgz#4b89da8c9899e0150679d0992e3218e51024fa99"
+  integrity sha512-wv1oWjNVUoG2s3E0TOFvDVAv29WrSzfsS4bjsop9sFF7VAUIJ7wGGGkTbJcBTJZvAuKNFm10/mY1jV253cPXfQ==
 
 "@svar-ui/lib-dom@0.9.2":
   version "0.9.2"
@@ -664,12 +664,12 @@
   dependencies:
     "@svar-ui/lib-state" "^1.9.6"
 
-"@svar-ui/svelte-core@2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@svar-ui/svelte-core/-/svelte-core-2.2.1.tgz#f41fe27d36fbae15aeebc5e97cc0f9500e23c867"
-  integrity sha512-nKQoyOzjkAnjA3VZ3jvnZe2ak3r+ozwBlf7RTeRjMKvBTRmjzbAi/7qPYDTBGs2+N5KAe3c2Ck9Va+jJM5S7fQ==
+"@svar-ui/svelte-core@2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@svar-ui/svelte-core/-/svelte-core-2.3.1.tgz#f5941d6b61ba52d2eee30da4894ea4caeee911a9"
+  integrity sha512-5ZrEcNX62UtQeB6GlpV15PRwiG7PvUYRdFR+tBjfXJr6Tw/xy1VN9VdwuV/1wXhgE+SSfnyUrJALfrAhGmfNIw==
   dependencies:
-    "@svar-ui/core-locales" "2.2.1"
+    "@svar-ui/core-locales" "2.3.1"
     "@svar-ui/lib-dom" "0.9.2"
     "@svar-ui/lib-svelte" "0.5.2"
 

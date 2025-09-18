@@ -17,8 +17,8 @@
 	}
 
 	function clicked(ev) {
-		const { context, action } = ev;
-		if (action) active[context] = action.id;
+		const { context, option } = ev;
+		if (option) active[context] = option.id;
 	}
 
 	let menu1 = $state();

@@ -1,3 +1,17 @@
+## 2.3.0
+
+### New features
+
+-   TypeScript definitions
+
+### Updates
+
+API changes with backward compatibility until 3.0
+
+-   `onclick` event of all menus: `action` parameter is renamed to `option`
+-   Option `type` property is renamed to `comp`
+-   Property `item` of a custom component, registered as menu option, is renamed to `option`
+
 ## 2.2.1
 
 ### Fixes

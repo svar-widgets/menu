@@ -28,28 +28,28 @@
 	</DropDownMenu>
 </div>
 <div class="demo-box">
-	<h3>Style for menu item</h3>
+	<h3>Style for menu option</h3>
 	<DropDownMenu options={options1}>
 		<Button type="primary">Click me</Button>
 	</DropDownMenu>
 </div>
 
 <style>
-	:global(.wx-item.danger span) {
+	:global(.wx-option.danger span) {
 		color: var(--wx-color-danger) !important;
 	}
 
 	:global(.wx-menu.custom-menu) {
 		background-color: #e4fdfc;
 	}
-	:global(.wx-menu.custom-menu .wx-item) {
+	:global(.wx-menu.custom-menu .wx-option) {
 		background-color: #e4fdfc;
 		color: #2c2f3c;
 	}
 	:global(.wx-menu.custom-menu .wx-value) {
 		color: #2c2f3c;
 	}
-	:global(.wx-menu.custom-menu .wx-item:hover) {
+	:global(.wx-menu.custom-menu .wx-option:hover) {
 		background-color: #fff;
 	}
 
@@ -57,10 +57,10 @@
 		background-color: #e4fdfc;
 		border: 1px solid #e6e6e6;
 	}
-	:global(.wx-menubar.custom-bar .wx-item) {
+	:global(.wx-menubar.custom-bar .wx-option) {
 		color: #2c2f3c;
 	}
-	:global(.wx-menubar.custom-bar .wx-item:hover) {
+	:global(.wx-menubar.custom-bar .wx-option:hover) {
 		background-color: #fff;
 	}
 	:global(.wx-menubar.custom-bar .wx-active) {

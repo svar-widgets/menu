@@ -7,7 +7,7 @@
 
 	const finalOptions = $derived(prepareMenuData(options));
 
-	let active = $state();
+	let active = $state(false);
 	let menuOptions = $state([]);
 
 	function doClick(ev) {
@@ -15,23 +15,24 @@
 		onclick && onclick(ev);
 	}
 
-	function setMenu(ev, item, trigger) {
-		// if the item has a submenu, show it and enable hover mode
-		if (item.data && item.data.length) {
+	function setMenu(ev, option, trigger) {
+		// if the option has a submenu, show it and enable hover mode
+		if (option.data && option.data.length) {
 			if (active && trigger) {
-				// second click on item with submenu disables hover mode
+				// second click on option with submenu disables hover mode
 				active = null;
 			} else {
-				menuOptions = item.data;
-				active = item.id;
-				menu.show(ev, item);
+				menuOptions = option.data;
+				active = option.id;
+				menu.show(ev, option);
 			}
 		} else {
 			// hide the submenu
 			menu.show(null);
 			// if it was the click action, dispatch it and end hover mode
 			if (trigger) {
-				onclick && onclick({ action: item });
+				//[deprecated] action will be deprecated in 3.0
+				onclick && onclick({ action: option, option });
 				active = null;
 			} else {
 				// do not remove active flag, to preserve the hover mode
@@ -40,17 +41,17 @@
 		}
 	}
 
-	function onHover(ev, item) {
-		if (active) setMenu(ev, item);
+	function onHover(ev, option) {
+		if (active) setMenu(ev, option);
 	}
 </script>
 
 <div class="wx-menubar {css}">
-	{#each finalOptions as item (item.id)}
+	{#each finalOptions as option (option.id)}
 		<button
-			class="wx-item {active === item.id ? 'wx-active' : ''}"
-			onmouseenter={ev => onHover(ev, item)}
-			onclick={ev => setMenu(ev, item, true)}>{item.text}</button
+			class="wx-option {active === option.id ? 'wx-active' : ''}"
+			onmouseenter={ev => onHover(ev, option)}
+			onclick={ev => setMenu(ev, option, true)}>{option.text}</button
 		>
 	{/each}
 </div>
@@ -69,7 +70,7 @@
 		width: fit-content;
 	}
 
-	.wx-item {
+	.wx-option {
 		background-color: transparent;
 		border: none;
 		color: var(--wx-color-font);
@@ -87,7 +88,7 @@
 	}
 
 	.wx-active,
-	.wx-item:hover {
+	.wx-option:hover {
 		background-color: var(--wx-background-alt);
 		border-radius: var(--wx-button-border-radius);
 	}

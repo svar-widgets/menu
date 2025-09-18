@@ -1,8 +1,5 @@
 <script>
 	import {
-		Material,
-		Willow,
-		WillowDark,
 		Globals,
 		popupContainer,
 		Button,
@@ -12,31 +9,10 @@
 	import Router from "./Router.svelte";
 	import Link from "./Link.svelte";
 	import { getLinks } from "./helpers";
-
 	import { GitHubLogoIcon, LogoIcon } from "../assets/icons/index";
 
-	const skins = [
-		{
-			id: "willow",
-			label: "Willow",
-			props: {},
-		},
-		{
-			id: "willow-dark",
-			label: "Dark",
-			props: {},
-		},
-	];
-
-	if (document.location.hostname !== "docs.svar.dev") {
-		skins.unshift({
-			id: "material",
-			label: "Material",
-			props: {},
-		});
-	}
-
-	let skin = $state("willow");
+	const { publicName, skins, productTag } = $props();
+	let skin = $state(skins[0].id);
 	let title = $state("");
 	let link = $state("");
 	let show = $state(true);
@@ -69,9 +45,9 @@
 	});
 </script>
 
-<Material />
-<Willow />
-<WillowDark />
+{#each skins as obj}
+	<obj.component />
+{/each}
 
 <div class="layout" class:active={show}>
 	<!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -97,7 +73,7 @@
 						href="https://svar.dev/svelte/core/"
 						target="_blank"
 						rel="noopener noreferrer"
-						><h1 class="title">Svelte Menu</h1></a
+						><h1 class="title">Svelte {publicName}</h1></a
 					>
 				</div>
 				<!-- svelte-ignore a11y_no_static_element_interactions -->
@@ -155,7 +131,7 @@
 		<div class="wrapper-content" onclick={() => (show = false)} role="none">
 			<div use:popupContainer class="content wx-{skin}-theme" role="none">
 				<Globals>
-					<Router onnewpage={updateInfo} {skin} />
+					<Router onnewpage={updateInfo} {skin} {productTag} />
 				</Globals>
 			</div>
 		</div>

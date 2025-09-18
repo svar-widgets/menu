@@ -6,9 +6,9 @@
 
 	let message = $state("");
 	function clicked(ev) {
-		const { context, action } = ev;
-		message = action
-			? `${action.id} for ${context.type} ${context.id}`
+		const { context, option } = ev;
+		message = option
+			? `${option.id} for ${context.type} ${context.id}`
 			: "closed";
 	}
 
@@ -26,11 +26,11 @@
 		if (item.disabled) return null;
 		return item;
 	}
-	function filterMenu(menu, item) {
+	function filterMenu(option, item) {
 		if (
 			item.type === "project" &&
-			typeof menu.id === "string" &&
-			!menu.id.startsWith("add-task")
+			typeof option.id === "string" &&
+			!option.id.startsWith("add-task")
 		)
 			return false;
 

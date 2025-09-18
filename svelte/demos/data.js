@@ -9,17 +9,17 @@ export function getProjects() {
 
 export function getTeam() {
 	return [
-		{ id: "user:1", type: "user", name: "Alex Wolensy" },
-		{ id: "user:2", type: "user", name: "Daisy Right" },
+		{ id: "user:1", comp: "user", name: "Alex Wolensy" },
+		{ id: "user:2", comp: "user", name: "Daisy Right" },
 		{
 			id: "t2",
 			text: "Second Team",
 			data: [
-				{ id: "user:3", type: "user", name: "Riana Zelani" },
-				{ id: "user:4", type: "user", name: "Branda Ash" },
+				{ id: "user:3", comp: "user", name: "Riana Zelani" },
+				{ id: "user:4", comp: "user", name: "Branda Ash" },
 			],
 		},
-		{ id: "btn", type: "button", name: "Add New" },
+		{ id: "btn", name: "Add New" },
 	];
 }
 
@@ -35,7 +35,7 @@ export function getOptions() {
 				{ id: "add-task:below", text: "Task below" },
 			],
 		},
-		{ type: "separator" },
+		{ comp: "separator" },
 		{
 			id: "edit-task",
 			text: "Edit",
