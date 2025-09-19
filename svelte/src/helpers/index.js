@@ -31,8 +31,9 @@ let uid = 1;
 export function prepareMenuData(data) {
 	return mapData(data, a => {
 		// [deprecated] option.type to be deprecated in 3.0
-		if (a.type) a.comp = a.type;
-		return { ...a, id: a.id || uid++ };
+		const opt = { ...a, id: a.id || uid++ };
+		if (opt.type) opt.comp = opt.type;
+		return opt;
 	});
 }
 

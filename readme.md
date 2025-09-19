@@ -4,7 +4,7 @@
 
 [![npm](https://img.shields.io/npm/v/@svar-ui/svelte-menu.svg)](https://www.npmjs.com/package/@svar-ui/svelte-menu)
 [![License](https://img.shields.io/github/license/svar-widgets/menu)](https://github.com/svar-widgets/menu/blob/main/license.txt)
-[![npm downloads](https://img.shields.io/npm/dm/wx-svelte-menu.svg)](https://www.npmjs.com/package/@svar-ui/svelte-menu)
+[![npm downloads](https://img.shields.io/npm/dm/@svar-ui/svelte-menu.svg)](https://www.npmjs.com/package/@svar-ui/svelte-menu)
 
 </div>
 

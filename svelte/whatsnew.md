@@ -1,3 +1,9 @@
+## 2.3.1
+
+### Fixes
+
+-   Backward compatibility for option type
+
 ## 2.3.0
 
 ### New features
