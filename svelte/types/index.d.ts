@@ -8,6 +8,7 @@ export interface IMenuOption {
 	data?: IMenuOption[];
 	css?: string;
 	icon?: string;
+	disabled?: boolean;
 	type?: string | Component<any>; // @deprecated use `comp` instead. Will be removed in v3.0
 	comp?: string | Component<any>;
 }

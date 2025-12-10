@@ -10,6 +10,7 @@ import MenuPositions from "./cases/MenuPositions.svelte";
 import Relative from "./cases/Relative.svelte";
 import MenuInAreas from "./cases/MenuInAreas.svelte";
 import Styling from "./cases/Styling.svelte";
+import DisabledOption from "./cases/DisabledOption.svelte";
 
 export const links = [
 	["/base/:skin", "Menu basic", BasicInit, "BasicInit"],
@@ -29,4 +30,5 @@ export const links = [
 	["/relative/:skin", "Relative scroll", Relative, "Relative"],
 	["/areas/:skin", "Menu in modals", MenuInAreas, "MenuInAreas"],
 	["/styling/:skin", "Styling", Styling, "Styling"],
+	["/disabled/:skin", "Disabled option", DisabledOption, "Disabled option"],
 ];

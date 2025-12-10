@@ -10,6 +10,9 @@ const cases = [
 	"/dropdown/:skin",
 	"/positions/:skin",
 	"/relative/:skin",
+	"/styling/:skin",
+	"/areas/:skin",
+	"/disabled/:skin",
 ];
 
 const skins = ["material", "willow", "willow-dark"];

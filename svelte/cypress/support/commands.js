@@ -10,3 +10,12 @@ Cypress.Commands.add("shot", (...args) => {
 	if (conf.area) cy.get(conf.area).screenshot(name, sconf);
 	else cy.screenshot(name, sconf);
 });
+
+Cypress.Commands.add(
+	"hover",
+	{ prevSubject: "element" },
+	(subject, options) => {
+		cy.wrap(subject).trigger("mouseenter", options);
+		return cy.wrap(subject);
+	}
+);

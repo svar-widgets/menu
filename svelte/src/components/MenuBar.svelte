@@ -50,6 +50,7 @@
 	{#each finalOptions as option (option.id)}
 		<button
 			class="wx-option {active === option.id ? 'wx-active' : ''}"
+			class:wx-disabled={option.disabled}
 			onmouseenter={ev => onHover(ev, option)}
 			onclick={ev => setMenu(ev, option, true)}>{option.text}</button
 		>
@@ -91,5 +92,11 @@
 	.wx-option:hover {
 		background-color: var(--wx-background-alt);
 		border-radius: var(--wx-button-border-radius);
+	}
+	.wx-disabled {
+		pointer-events: none;
+	}
+	.wx-disabled {
+		color: var(--wx-color-font-disabled);
 	}
 </style>

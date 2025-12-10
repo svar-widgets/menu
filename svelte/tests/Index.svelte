@@ -61,7 +61,8 @@
 	.content {
 		height: 100%;
 		width: 100%;
-		overflow: hidden;
+		overflow-x: hidden;
+		overflow-y: auto;
 		padding: 0;
 		margin: 0;
 	}

@@ -14,6 +14,7 @@
 <div
 	bind:this={element}
 	class="wx-option {option.css || ''}"
+	class:wx-disabled={option.disabled}
 	data-id={option.id}
 	onmouseenter={onHover}
 	{onclick}
@@ -79,5 +80,14 @@
 		color: var(--wx-color-font-disabled);
 		margin-left: 20px;
 		white-space: nowrap;
+	}
+
+	.wx-disabled {
+		pointer-events: none;
+	}
+	.wx-disabled .wx-value,
+	.wx-disabled .wx-icon,
+	.wx-disabled .wx-sub-icon {
+		color: var(--wx-color-font-disabled);
 	}
 </style>

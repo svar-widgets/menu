@@ -1,3 +1,14 @@
+## 2.4.0
+
+### Updates
+
+-   More options to precisely position and align ContextMenu, DropDownMenu, ActionMenu
+
+### Fixes
+
+-   Incorrect position of Menus in a relatively positioned continer
+-   Incorrect position of Menus close to the container edges
+
 ## 2.3.1
 
 ### Fixes
