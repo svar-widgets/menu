@@ -1,4 +1,5 @@
 <script>
+	import { setID } from "@svar-ui/lib-dom";
 	import { getItemHandler } from "../helpers";
 
 	let { option, onclick, onshow } = $props();
@@ -6,6 +7,14 @@
 	let element;
 	function onHover() {
 		onshow(option.data ? option.id : false, element);
+	}
+	function onClick(ev) {
+		if (option.data) {
+			ev.stopPropagation();
+			onshow(option.id, element);
+			return;
+		}
+		onclick(ev);
 	}
 </script>
 
@@ -15,9 +24,9 @@
 	bind:this={element}
 	class="wx-option {option.css || ''}"
 	class:wx-disabled={option.disabled}
-	data-id={option.id}
+	data-id={setID(option.id)}
 	onmouseenter={onHover}
-	{onclick}
+	onclick={onClick}
 >
 	{#if option.icon}<i class="wx-icon {option.icon}"></i>{/if}
 	{#if option.comp}

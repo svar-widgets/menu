@@ -33,7 +33,7 @@
 	const innerResolver = id => (id[0] == "b" ? id : null);
 	const outerResolver = id => (id[0] == "c" ? id : null);
 
-	var menu = $state();
+	let menu = $state();
 </script>
 
 <div class="demo-status">{message} {submessage}</div>

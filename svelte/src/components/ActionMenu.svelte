@@ -1,8 +1,8 @@
 <script>
 	import { Portal } from "@svar-ui/svelte-core";
-	import { id } from "@svar-ui/lib-dom";
 	import Menu from "./Menu.svelte";
 	import { filterMenu } from "../helpers";
+	import { locateID } from "@svar-ui/lib-dom";
 
 	let {
 		options,
@@ -15,29 +15,25 @@
 		onclick,
 	} = $props();
 
-	var filteredOptions = $derived.by(() => {
+	const attrName = $derived(
+		`data-${dataKey.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase()}`
+	);
+
+	const filteredOptions = $derived.by(() => {
 		if (item !== null && filter) {
 			return filterMenu(options, v => filter(v, item));
 		}
 		return options;
 	});
 
-	var item = $state(null);
-	var parent = $state(null);
+	let item = $state(null);
+	let parent = $state(null);
 	let left = $state(0),
 		top = $state(0);
 
 	function onClick(ev) {
 		parent = null;
 		onclick && onclick(ev);
-	}
-	function getDataAttr(node, name) {
-		let v = null;
-		while (node && node.dataset && !v) {
-			v = node.dataset[name];
-			node = node.parentNode;
-		}
-		return v ? id(v) : null;
 	}
 
 	export function show(ev, obj) {
@@ -54,7 +50,7 @@
 		left = ev.clientX + 1;
 		top = ev.clientY + 1;
 
-		item = typeof obj !== "undefined" ? obj : getDataAttr(target, dataKey);
+		item = typeof obj !== "undefined" ? obj : locateID(target, attrName);
 		if (resolver) {
 			item = resolver(item, ev);
 			if (!item) return;

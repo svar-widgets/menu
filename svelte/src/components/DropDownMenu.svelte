@@ -9,7 +9,7 @@
 		ev.preventDefault();
 	}
 
-	var parent = $state(null);
+	let parent = $state(null);
 	function onClick(ev) {
 		parent = null;
 		onclick && onclick(ev);

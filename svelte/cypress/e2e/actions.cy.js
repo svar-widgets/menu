@@ -6,18 +6,18 @@ context("Menu actions", () => {
 		cy.shot("basic-menu-bottom");
 
 		//click option with submenu - no action
-		cy.get('.wx-option[data-id="add-task"]').click();
+		cy.wxM("menu-option", "add-task").click();
 		cy.get(".wx-button").eq(0).click();
 		cy.get(".demo-status").eq(0).should("include.text", "closed");
 
 		cy.get(".wx-button").eq(1).click();
 		cy.get(".wx-menu").should("be.visible");
 		cy.shot("basic-menu-right");
-		cy.get('.wx-option[data-id="add-task"]').should("be.visible").hover();
+		cy.wxM("menu-option", "add-task").should("be.visible").hover();
 		cy.get(".wx-menu .wx-menu").should("be.visible");
 		cy.shot("menubar-submenu-visible");
 		//click submenu option
-		cy.get('.wx-option[data-id="add-task:child"]').click();
+		cy.wxM("menu-option", "add-task:child").click();
 		cy.get(".demo-status")
 			.eq(0)
 			.should("include.text", "clicked on add-task:child");
@@ -26,7 +26,7 @@ context("Menu actions", () => {
 		//click normal menu option
 		cy.get(".wx-menu").should("be.visible");
 		cy.shot("basic-menu-cursor");
-		cy.get('.wx-option[data-id="edit-task"]').click();
+		cy.wxM("menu-option", "edit-task").click();
 		cy.get(".demo-status")
 			.eq(0)
 			.should("include.text", "clicked on edit-task");

@@ -1,3 +1,5 @@
+import { uid } from "@svar-ui/lib-dom";
+
 export function walkData(data, cb) {
 	data.forEach(a => {
 		cb(a);
@@ -27,11 +29,10 @@ export function filterMenu(data, cb) {
 	return out;
 }
 
-let uid = 1;
 export function prepareMenuData(data) {
 	return mapData(data, a => {
 		// [deprecated] option.type to be deprecated in 3.0
-		const opt = { ...a, id: a.id || uid++ };
+		const opt = { ...a, id: a.id || uid() };
 		if (opt.type) opt.comp = opt.type;
 		return opt;
 	});

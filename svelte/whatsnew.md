@@ -1,3 +1,13 @@
+## 2.4.2
+
+### Fixes
+
+-   Submenus are not shown on mobile devices
+
+## 2.4.1
+
+-   Using Svelte Core v2.4.1
+
 ## 2.4.0
 
 ### Updates
