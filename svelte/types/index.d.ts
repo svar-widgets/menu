@@ -15,8 +15,8 @@ export interface IMenuOption {
 
 export interface IMenuOptionClick {
 	context?: any;
-	action: IMenuOption; // @deprecated use `option` instead. Will be removed in v3.0
-	option: IMenuOption;
+	action: IMenuOption | null; // @deprecated use `option` instead. Will be removed in v3.0
+	option: IMenuOption | null;
 	event?: MouseEvent;
 }
 

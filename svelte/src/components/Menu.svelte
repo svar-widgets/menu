@@ -1,7 +1,11 @@
 <script>
 	import Menu from "./Menu.svelte";
 
-	import { clickOutside, calculatePosition } from "@svar-ui/lib-dom";
+	import {
+		clickOutside,
+		calculatePosition,
+		getPopupParents,
+	} from "@svar-ui/lib-dom";
 	import { onMount } from "svelte";
 
 	import MenuOption from "./MenuOption.svelte";
@@ -33,9 +37,19 @@
 		if (result) {
 			x = result.x;
 			y = result.y;
-			z = result.z;
 			width = result.width;
 		}
+
+		let nextZ = result?.z ?? 20;
+		// stay above ancestor popups (anchor lives in original DOM, not the portal)
+		const parents = parent ? getPopupParents(parent) : [];
+		let popupZ = 0;
+		for (const node of parents) {
+			const zi = parseInt(getComputedStyle(node).zIndex, 10);
+			if (zi > popupZ) popupZ = zi;
+		}
+		if (popupZ >= nextZ) nextZ = popupZ + 1;
+		z = nextZ;
 	}
 
 	// unfortunately svelte doesn't guarantee that afterUpdate of child component
@@ -43,6 +57,12 @@
 	// moved menu to the correct parent we are registering single time handler
 	if (mount) mount(updatePosition);
 	onMount(updatePosition);
+
+	$effect(() => {
+		updatePosition();
+	});
+
+	const finalOptions = $derived(prepareMenuData(options));
 
 	function onLeave() {
 		showSub = false;
@@ -55,16 +75,11 @@
 		showSub = id;
 		activeOption = el;
 	}
-
-	const finalOptions = $derived(prepareMenuData(options));
-	$effect(() => {
-		updatePosition(parent);
-	});
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
-	use:clickOutside={{ callback: cancel, modal: true }}
+	use:clickOutside={{ callback: cancel, modal: true, parent: () => parent }}
 	bind:this={self}
 	data-wx-menu="true"
 	class="wx-menu {css}"

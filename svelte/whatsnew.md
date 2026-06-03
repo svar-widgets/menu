@@ -1,3 +1,9 @@
+## 2.6.0
+
+### Fixes
+
+-   Duplicate separators are auto removed
+
 ## 2.5.3
 
 -   Using Svelte Core v2.5.3

@@ -8,11 +8,13 @@ export function walkData(data, cb) {
 }
 
 export function mapData(data, cb) {
-	return data.map(a => {
-		const out = cb(a);
-		if (a.data && a.data.length) out.data = mapData(a.data, cb);
-		return out;
-	});
+	return data
+		.map((a, i) => {
+			const out = cb(a, i);
+			if (a.data && a.data.length) out.data = mapData(a.data, cb);
+			return out;
+		})
+		.filter(Boolean);
 }
 
 export function filterMenu(data, cb) {
@@ -30,10 +32,12 @@ export function filterMenu(data, cb) {
 }
 
 export function prepareMenuData(data) {
-	return mapData(data, a => {
+	return mapData(data, (a, i) => {
 		// [deprecated] option.type to be deprecated in 3.0
 		const opt = { ...a, id: a.id || uid() };
 		if (opt.type) opt.comp = opt.type;
+		if (opt.comp === "separator" && data[i - 1]?.comp === "separator")
+			return null;
 		return opt;
 	});
 }

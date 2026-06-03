@@ -23,7 +23,10 @@
 <div class="demo-box">
 	<h3>Nested context menus</h3>
 	<ContextMenu {options} onclick={clicked} at="point">
-		<div class="double-box" style="padding:20px; background: #ddd">
+		<div
+			class="double-box"
+			style="padding:20px; background: var(--wx-background-alt)"
+		>
 			Click me (outer menu)
 			<br />
 			<ContextMenu
@@ -32,7 +35,7 @@
 				at="right"
 			>
 				<span
-					style="display: inline-block; width: 150px; padding:10px; background: #fff;"
+					style="display: inline-block; width: 150px; padding:10px; background: var(--wx-background);"
 					>(inner menu)</span
 				>
 			</ContextMenu>

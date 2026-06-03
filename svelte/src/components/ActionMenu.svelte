@@ -60,11 +60,10 @@
 
 		ev.preventDefault();
 	}
-
 	// about #key in markup below
 	// we need to be sure that menu is closed before it is shown again
-	// its the only way to reinit click-outside
-	// otherwise, the menu will be hidden as click-ouside occurs after show call
+	// it's the only way to reinit click-outside
+	// otherwise, the menu will be hidden as click-outside occurs after show call
 </script>
 
 {#if children}
