@@ -1,0 +1,62 @@
+{
+	"name": "@svar-ui/svelte-menu",
+	"version": "2.6.2",
+	"description": "Svelte menu component for creating dropdown menus, context menus, or complex menu bars",
+	"keywords": [
+		"context menu",
+		"dropdown",
+		"dropdown menu",
+		"menu",
+		"menu bar",
+		"menu component",
+		"menubar",
+		"svar widgets",
+		"svelte",
+		"svelte component",
+		"svelte menu"
+	],
+	"homepage": "https://svar.dev/svelte/core/",
+	"bugs": {
+		"url": "https://forum.svar.dev"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/svar-widgets/menu.git"
+	},
+	"files": [
+		"dist",
+		"readme.md",
+		"whatsnew.md",
+		"license.txt"
+	],
+	"type": "module",
+	"types": "./dist/index.d.ts",
+	"svelte": "./dist/index.js",
+	"exports": {
+		".": {
+			"svelte": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		},
+		"./package.json": "./package.json"
+	},
+	"scripts": {
+		"check": "svelte-check --tsconfig ./tsconfig.json",
+		"build": "svelte-package -i ./src",
+		"dev": "svelte-package -i ./src --watch"
+	},
+	"dependencies": {
+		"@svar-ui/lib-dom": "catalog:",
+		"@svar-ui/svelte-core": "catalog:"
+	},
+	"devDependencies": {
+		"@sveltejs/package": "catalog:",
+		"@sveltejs/vite-plugin-svelte": "catalog:",
+		"svelte": "catalog:",
+		"svelte-check": "catalog:"
+	},
+	"peerDependencies": {
+		"svelte": "^5.0.0"
+	},
+	"productTag": "menu"
+}
